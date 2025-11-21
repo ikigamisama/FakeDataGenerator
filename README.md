@@ -1,28 +1,32 @@
-# FakeDataGenerator by Iki
+# SyntheticDataCrafter by Iki
 
-> A powerful, flexible Python library for generating realistic fake data across 700+ data types with multi-format export capabilities.
+> **Hyper-realistic synthetic data generator** — 750+ field types, real-world distributions, relational schemas, and instant export to 10+ formats.
 
-## ✨ Features
+## ✨ Why SyntheticDataCrafter wins
 
-- 🎯 **700+ Data Types** spanning 20+ categories (Personal, Commerce, IT, Health, Finance, Nature, Travel, etc.)
-- 🔧 **Flexible Schema Definition** with customizable options per field
-- 📦 **Multiple Export Formats**: CSV, JSON, SQL, CQL, Firebase, Excel, XML, DBUnit, Tab-Delimited, parquet, duckDB
-- 🎲 **Statistical Distributions**: Normal, Poisson, Binomial, Exponential, Geometric
-- 🌍 **Location-Aware**: Country-specific phones, addresses, postal codes
-- 💼 **Enterprise Ready**: IBAN, SWIFT codes, stock data, medical codes (ICD-9/10)
+| Feature                       | What you get                                                                               |
+| ----------------------------- | ------------------------------------------------------------------------------------------ |
+| 750+ realistic fields         | Names, addresses, phones, emails, credit cards, IBAN, SWIFT, ICD-10, stock tickers, UUIDs… |
+| 20+ categories                | Personal, Finance, Commerce, Health, IT, Travel, Science, Crypto, Automotive, etc.         |
+| Country-specific realism      | Localized phones, addresses, postal codes, national IDs for 100+ countries                 |
+| Statistical distributions     | Normal, Poisson, Exponential, Binomial, Zipf, custom weights                               |
+| Relational & conditional data | One-to-many, foreign keys, field dependencies, realistic correlations                      |
+| 10+ export formats            | CSV, JSON, Parquet, SQL, Excel, XML, DuckDB, Firebase, CQL, Avro, DBUnit, TSV              |
+| Zero bloat                    | No external dependencies for core exports                                                  |
+| Fluent, chainable API         | Readable, fast, scales to millions of rows                                                 |
 
 ## ⚡ Installation
 
 Install the latest version from PyPI:
 
 ```bash
-pip install fakedatagenerator
+pip install synthetic-data-crafter
 ```
 
 ## 🚀 Quick Start
 
 ```python
-from fakedatagenerator import FakeDataGenerator
+from synthetic_data_crafter import SyntheticDataCrafter
 
 schema = [
     {
@@ -67,7 +71,7 @@ schema = [
 ]
 
 # Generate 100 records and export to all formats
-FakeDataGenerator(schema).many(100).export(
+SyntheticDataCrafter(schema).many(100).export(
     table_name="users",
     output_dir="output",
     formats=['csv'] # Can be multiple "csv" ,"json", "sql","cql", "firebase",  "excel",  "xml","dbunit", "parquet", "duckdb",
@@ -1286,7 +1290,7 @@ Each field in your schema requires:
 ### Generate Data
 
 ```python
-dfg = FakeDataGenerator(schema)
+dfg = SyntheticDataCrafter(schema)
 
 # Generate single record
 dfg.one()
@@ -1364,7 +1368,7 @@ schema = [
     {"label": "ordered_at", "key_label": "datetime", "group": "basic", "options": {"from_date": "2024-01-01", "to_date": "2024-12-31"}}
 ]
 
-FakeDataGenerator(schema).many(5000).export("orders", "exports", formats=["csv", "json", "excel"])
+SyntheticDataCrafter(schema).many(5000).export("orders", "exports", formats=["csv", "json", "excel"])
 ```
 
 ### Healthcare Records System
@@ -1386,7 +1390,7 @@ schema = [
     {"label": "admission_date", "key_label": "datetime", "group": "basic", "options": {}}
 ]
 
-FakeDataGenerator(schema).many(1000).export("patients", "medical_data")
+SyntheticDataCrafter(schema).many(1000).export("patients", "medical_data")
 ```
 
 ### Financial Transactions
@@ -1405,7 +1409,7 @@ schema = [
     {"label": "timestamp", "key_label": "datetime", "group": "basic", "options": {}}
 ]
 
-FakeDataGenerator(schema).many(10000).export("transactions", "finance")
+SyntheticDataCrafter(schema).many(10000).export("transactions", "finance")
 ```
 
 ### Travel Booking System
@@ -1426,7 +1430,7 @@ schema = [
     {"label": "status", "key_label": "flight_status", "group": "travel", "options": {}}
 ]
 
-FakeDataGenerator(schema).many(2000).export("bookings", "travel_data")
+SyntheticDataCrafter(schema).many(2000).export("bookings", "travel_data")
 ```
 
 ### IT Infrastructure Monitoring
@@ -1445,7 +1449,7 @@ schema = [
     {"label": "last_check", "key_label": "datetime", "group": "basic", "options": {}}
 ]
 
-FakeDataGenerator(schema).many(500).export("servers", "monitoring")
+SyntheticDataCrafter(schema).many(500).export("servers", "monitoring")
 ```
 
 ### Employee Database
@@ -1467,7 +1471,7 @@ schema = [
     {"label": "performance", "key_label": "performance_rating", "group": "personal", "options": {}}
 ]
 
-FakeDataGenerator(schema).many(3000).export("employees", "hr_data")
+SyntheticDataCrafter(schema).many(3000).export("employees", "hr_data")
 ```
 
 ### Cryptocurrency Trading Platform
@@ -1486,7 +1490,7 @@ schema = [
     {"label": "timestamp", "key_label": "datetime", "group": "basic", "options": {}}
 ]
 
-FakeDataGenerator(schema).many(5000).export("crypto_trades", "blockchain")
+SyntheticDataCrafter(schema).many(5000).export("crypto_trades", "blockchain")
 ```
 
 ### Education Management System
@@ -1506,7 +1510,7 @@ schema = [
     {"label": "enrollment_date", "key_label": "datetime", "group": "basic", "options": {}}
 ]
 
-FakeDataGenerator(schema).many(1500).export("students", "education_data")
+SyntheticDataCrafter(schema).many(1500).export("students", "education_data")
 ```
 
 ### IoT Sensor Data
@@ -1525,7 +1529,7 @@ schema = [
     {"label": "last_ping", "key_label": "datetime", "group": "basic", "options": {}}
 ]
 
-FakeDataGenerator(schema).many(10000).export("iot_sensors", "sensor_data")
+SyntheticDataCrafter(schema).many(10000).export("iot_sensors", "sensor_data")
 ```
 
 ### Real Estate Listings
@@ -1545,7 +1549,7 @@ schema = [
     {"label": "listing_date", "key_label": "datetime", "group": "basic", "options": {}}
 ]
 
-FakeDataGenerator(schema).many(2000).export("properties", "real_estate")
+SyntheticDataCrafter(schema).many(2000).export("properties", "real_estate")
 ```
 
 ## 📋 Format-Specific Options Reference
@@ -1806,4 +1810,4 @@ MIT
 
 ---
 
-**FakeDataGenerator** - Making test data generation simple and powerful
+**SyntheticDataCrafter** - Making test data generation simple and powerful

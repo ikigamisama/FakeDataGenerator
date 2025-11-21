@@ -1,4 +1,4 @@
-from fakedatagenerator import FakeDataGenerator
+from synthetic_data_crafter import SyntheticDataCrafter
 
 schema = [
     {
@@ -23,7 +23,7 @@ schema = [
         "label": "template",
         "key_label": "template",
         "group": 'advanced',
-        "options": {"blank_percentage": 0, "template": "{id} {First Name} {Last Name}"}
+        "options": {"blank_percentage": 0, "template": "{{id}} {{First Name}} {{Last Name}}"}
     },
 
     {
@@ -36,11 +36,11 @@ schema = [
     {
         "label": "email",
         "key_label": "email_address",
-        "group": 'basic',
+        "group": 'it',
         "options": {"blank_percentage": 0}
     },
 
 ]
 
-FakeDataGenerator(schema).many(100).export(
+SyntheticDataCrafter(schema).many(100).export(
     table_name="users", output_dir="output")
